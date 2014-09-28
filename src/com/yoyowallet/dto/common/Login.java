@@ -1,4 +1,4 @@
-package com.yoyowallet.dtos.common;
+package com.yoyowallet.dto.common;
 
 /**
  * 

@@ -1,0 +1,22 @@
+
+1. Use JDBC when retrieving large informations since its will take Hibernate is slowers than JDBC.
+
+2. DataSource object is a better alternative than the DriverManager class for getting a connection. Programmers no longer have to hard code the driver name or JDBC URL in their applications, which makes them more portable.
+Also because of the connection pooling.
+	http://www.java-forums.org/blogs/jdbc/1413-advantages-datasource-objects.html
+	
+3.  http://stackoverflow.com/questions/3226282/are-there-best-practices-for-java-package-organisation
+Package organization or package structuring is usually a heated discussion. Below are some simple guidelines for package naming and structuring:
+
+Follow java package naming conventions
+Structure your packages according to their functional role as well as their business role
+Break down your packages according to their functionality or modules. e.g. com.company.product.modulea
+Further break down could be based on layers in your software. But don't go overboard if you have very less classes in the package, then it makes sense to have everything in the package. e.g. com.company.product.module.web or com.company.product.module.util etc.
+Avoid going overboard with structuring, IMO avoid separate packaging for exceptions, factories, etc. unless there's a pressing need.
+If your project is small, keep it simple with few packages. e.g. com.company.product.model and com.company.product.util, etc.
+Take a look at some of the popular open source projects out there on Apache projects. See how they use structuring, for various sized projects.
+Also consider build and distribution when naming ( allowing you to distribute your api or SDK in a different package, see servlet api)
+After a few experiments and trials you should be able to come up with a structuring that you are comfortable with. Don't be fixated on one convention, be open to changes.
+
+4. To read the property file from the resource folder.
+InputStream inputStream = getClass().getClassLoader().getResourceAsStream(propFile);

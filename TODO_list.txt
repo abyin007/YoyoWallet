@@ -1,0 +1,11 @@
+
+1. JDBC and Hibernate
+ Use JDBC when retrieving large informations since its will take Hibernate is slower than JDBC.
+ 
+2. Complete the exception handling.
+
+3. Implement logger and interceptor.
+
+4. encrypt the password before persisting to db.
+
+5. Change the currency to Select option in register.jsp

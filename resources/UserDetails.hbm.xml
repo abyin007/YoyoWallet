@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+	<class name="com.yoyowallet.dto.common.UserDetails" table="userdetails">
+		<meta attribute="class-description">
+			This class contains the user details.
+		</meta>
+		<id name="username" type="string" column="username" />
+		<property name="fname" type="string" column="fname" />
+		<property name="lname" type="string" column="lname" />
+		<property name="email" type="string" column="email" />
+		<property name="password" type="string" column="password" />
+		<property name="mobileNo" type="long" column="mobileNo" />
+		<property name="city" type="string" column="city" />
+		<property name="country" type="string" column="country" />
+		<property name="pinCode" type="string" column="pinCode" />
+		<property name="currency" type="string" column="currency" />
+		<property name="martialStatus" type="string" column="martialStatus" />
+		<property name="address" type="string" column="address" />
+		<property name="stayingWith" type="string" column="stayingWith" />
+	</class>
+
+</hibernate-mapping>

@@ -1,4 +1,4 @@
-package com.yoyowallet.dtos.common;
+package com.yoyowallet.dto.common;
 
 /**
  * 
@@ -14,7 +14,7 @@ public class UserDetails {
 	private String lname;
 	private String email;
 	private String password;
-	private int mobileNo;
+	private long mobileNo;
 	private String city;
 	private String country;
 	private int pinCode;
@@ -63,7 +63,7 @@ public class UserDetails {
 		this.password = password;
 	}
 
-	public int getMobileNo() {
+	public long getMobileNo() {
 		return mobileNo;
 	}
 
