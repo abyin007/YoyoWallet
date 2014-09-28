@@ -12,7 +12,7 @@ public class RegisterBO {
 	 */
 	public void registerUser(UserDetails userDetails) {
 		//TODO encrypt the password
-		//registerDAO.registerUser(userDetails);
-		registerDAO.registerUserUsingHibernate(userDetails);
+		registerDAO.registerUser(userDetails);
+		//registerDAO.registerUserUsingHibernate(userDetails);
 	}
 }
