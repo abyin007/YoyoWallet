@@ -15,21 +15,32 @@ import com.yoyowallet.utils.DBConnection;
 public class RegisterDAO {
 
 	DBConnection dBConnection = new DBConnection();
-	Connection connection = dBConnection.getMySQLDataSource();
+	Connection connection = null;
+
+	public RegisterDAO() {
+		try {
+			connection = dBConnection.getMySQLDataSource().getConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 	/**
 	 * Add the userdetails into the db using jdbc.
 	 * 
 	 * @param userDetails
 	 */
-	public void registerUser(UserDetails userDetails) {
+	public boolean registerUser(UserDetails userDetails) {
 
 		int noOfRecords = 0;
 		String message = null;
+		boolean registerStatus = false;
+		String registerQuery = "INSERT INTO userdetails VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		if (connection != null) {
 			try {
 				PreparedStatement statement = connection
-						.prepareStatement("INSERT INTO userdetails VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)");
+						.prepareStatement(registerQuery);
 				statement.setString(1, userDetails.getUsername());
 				statement.setString(2, userDetails.getFname());
 				statement.setString(3, userDetails.getLname());
@@ -45,13 +56,19 @@ public class RegisterDAO {
 				statement.setString(13, userDetails.getStayingWith());
 
 				noOfRecords = statement.executeUpdate();
+				statement.close();
+				connection.close();
+				if(noOfRecords>0){
+					registerStatus = true;
+				}
 				message = noOfRecords + " inserted successfully";
 				System.out.println(message);
 			} catch (SQLException exception) {
 				exception.printStackTrace();
-
+				return false;
 			}
 		}
+		return registerStatus;
 	}
 
 	/**
@@ -60,7 +77,7 @@ public class RegisterDAO {
 	 * @param userDetails
 	 */
 	public void registerUserUsingHibernate(UserDetails userDetails) {
-
+		// TODO not working
 		SessionFactory sessionFactory = new Configuration().configure()
 				.buildSessionFactory();
 		Session session = sessionFactory.openSession();

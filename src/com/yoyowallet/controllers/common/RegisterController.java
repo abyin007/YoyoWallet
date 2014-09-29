@@ -21,7 +21,7 @@ import com.yoyowallet.dto.common.UserDetails;
 public class RegisterController {
 
 	@RequestMapping(method = RequestMethod.GET)
-	public String setUpRegister(Model model) {
+	public String setupRegister(Model model) {
 		UserDetails registerForm = new UserDetails();
 		model.addAttribute("registerForm", registerForm);
 		return "register";
@@ -31,8 +31,11 @@ public class RegisterController {
 	public String registerUser(
 			@ModelAttribute("registerForm") UserDetails userDetails, Model model) {
 		RegisterBO registerBO = new RegisterBO();
-		registerBO.registerUser(userDetails);
-		return "registerSuccess";
+		boolean registerStatus = registerBO.registerUser(userDetails);
+		if (registerStatus == true) {
+			return "registerSuccess";
+		} else {
+			return "registerFailure";
+		}
 	}
-
 }

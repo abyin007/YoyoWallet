@@ -12,8 +12,8 @@
 		<table>
 			<tr>
 				<td>Email or Username: </td>
-				<td><form:input path="username" /></td>
-				<td><form:errors path="username" cssClass="error" /></td>
+				<td><form:input path="userID" /></td>
+				<td><form:errors path="userID" cssClass="error" /></td>
 			</tr>
 			<tr>
 				<td>Password: </td>

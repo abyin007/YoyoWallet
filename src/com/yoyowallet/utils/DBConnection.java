@@ -2,9 +2,9 @@ package com.yoyowallet.utils;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.sql.Connection;
-import java.sql.SQLException;
 import java.util.Properties;
+
+import javax.sql.DataSource;
 
 import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
 
@@ -17,10 +17,9 @@ import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
  */
 public class DBConnection {
 
-	public Connection getMySQLDataSource() {
+	public DataSource getMySQLDataSource() {
 		Properties props = new Properties();
 		MysqlDataSource mysqlDS = null;
-		Connection con = null;
 		String propFile = "dbconnection.properties";
 		try {
 			InputStream inputStream = getClass().getClassLoader().getResourceAsStream(propFile);
@@ -29,16 +28,11 @@ public class DBConnection {
 			mysqlDS.setURL(props.getProperty("MYSQL_DB_URL"));
 			mysqlDS.setUser(props.getProperty("MYSQL_DB_USERNAME"));
 			mysqlDS.setPassword(props.getProperty("MYSQL_DB_PASSWORD"));
-			con = mysqlDS.getConnection();
-
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
-		return con;
+		return mysqlDS;
 	}
 
 }
