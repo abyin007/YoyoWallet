@@ -31,9 +31,10 @@ public class LoginController {
 	public String loginUser(
 			@ModelAttribute("loginForm") Login login, Model model) {
 		LoginBO loginBO = new LoginBO();
-		boolean loginStatus = loginBO.loginUser(login);
-		if (loginStatus == true) {
-			return "loginSuccess";
+		String username = loginBO.loginUser(login);
+		if (null != username) {
+			model.addAttribute("username", username);
+			return "user/userHome";
 		} else {
 			return "loginFailure";
 		}

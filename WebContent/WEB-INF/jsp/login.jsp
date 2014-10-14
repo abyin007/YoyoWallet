@@ -21,7 +21,7 @@
 				<td><form:errors path="password" cssClass="error" /></td>
 			</tr>
 			<tr>
-				<td colspan="3"><input type="submit" /></td>
+				<td colspan="3"><input type="submit" value="Login"/></td>
 			</tr>
 		</table>
 	</form:form>

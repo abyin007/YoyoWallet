@@ -1,6 +1,7 @@
 
 1. JDBC and Hibernate
- Use JDBC when retrieving large informations since its will take Hibernate is slower than JDBC.
+ Use JDBC when retrieving large informations since Hibernate is slower than JDBC.
+ Also Hibernate is not working now.
  
 2. Complete the exception handling.
 

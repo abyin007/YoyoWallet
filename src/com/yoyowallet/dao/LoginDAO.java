@@ -28,11 +28,11 @@ public class LoginDAO {
 		}
 	}
 
-	public boolean loginUser(Login login) {
+	public String loginUser(Login login) {
 		ResultSet resultSet = null;
 		String loginQuery = null;
-		boolean loginStatus = false;
-		if ("@".contains(login.getUserID())) {
+		String username = null;
+		if (login.getUserID().contains("@")) {
 			loginQuery = "SELECT username FROM userdetails WHERE email=? AND password=?";
 		} else {
 			loginQuery = "SELECT username FROM userdetails WHERE username=? AND password=?";
@@ -46,7 +46,7 @@ public class LoginDAO {
 				statement.setString(2, login.getPassword());
 				resultSet = statement.executeQuery();
 				if (resultSet.next()) {
-					loginStatus = true;
+					username = resultSet.getString(1);
 					System.out.println("Login Success.");
 				} else {
 					System.out.println("Login Failed.");
@@ -55,9 +55,9 @@ public class LoginDAO {
 				connection.close();
 			} catch (SQLException exception) {
 				exception.printStackTrace();
-				return false;
+				return null;
 			}
 		}
-		return loginStatus;
+		return username;
 	}
 }
