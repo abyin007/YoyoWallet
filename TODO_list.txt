@@ -12,3 +12,5 @@
 5. Change the currency to Select option in register.jsp
 
 6. Include validator.
+
+7. change the packages to com.<company_name>.yoyowallet.

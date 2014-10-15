@@ -12,7 +12,7 @@
 	<br />
 	<table>
 		<tr>
-			<td><a href="addExpense">Add Expense</a></td>
+			<td><a href="user/addExpense">Add Expense</a></td>
 		</tr>
 		<tr>
 			<td><a href="viewExpense">View Expense</a></td>
